@@ -14,15 +14,11 @@ import {
   Users,
   BookOpen,
   Calendar,
-  TrendingUp,
   Globe,
   Heart,
   Sparkles,
   Target,
   Code,
-  Database,
-  Server,
-  Palette,
   MessageSquare,
   Award,
   Clock,
@@ -38,6 +34,7 @@ import {
 
 export default async function AboutPage() {
   await new Promise((resolve) => setTimeout(resolve, 4000));
+  // throw new Error("Something went wrong");
   // Hardcoded Data
   const stats = [
     { icon: BookOpen, label: "Total Posts", value: "1,247", color: "blue" },
@@ -199,10 +196,10 @@ export default async function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+        <div className="absolute inset-0 bg-linear-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
         <div className="container mx-auto px-4 py-16 relative">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 py-2 px-4 text-sm">
@@ -212,7 +209,7 @@ export default async function AboutPage() {
 
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
               Building the{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Future
               </span>{" "}
               of Tech Content
@@ -323,7 +320,7 @@ export default async function AboutPage() {
                   <div className="space-y-6">
                     {values.map((value, index) => (
                       <div key={index} className="flex items-start space-x-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                        <div className="shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                           <span className="text-blue-600 dark:text-blue-400 font-bold">
                             {index + 1}
                           </span>
@@ -462,7 +459,7 @@ export default async function AboutPage() {
                     {recentPosts.map((post, index) => (
                       <div key={index} className="group">
                         <div className="flex items-start space-x-3">
-                          <div className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-blue-500" />
+                          <div className="shrink-0 w-2 h-2 mt-2 rounded-full bg-blue-500" />
                           <div>
                             <h4 className="font-medium group-hover:text-blue-600 transition-colors">
                               {post.title}
@@ -495,7 +492,7 @@ export default async function AboutPage() {
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-dashed border-blue-200 dark:border-blue-800 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+          <Card className="border-2 border-dashed border-blue-200 dark:border-blue-800 bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
             <CardContent className="pt-12 pb-12">
               <div className="text-center max-w-2xl mx-auto">
                 <div className="inline-flex p-3 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-6">

@@ -18,7 +18,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AboutLoading() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Header Skeleton */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
@@ -185,7 +185,7 @@ export default function AboutLoading() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-20" />
+      <div className="fixed top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-blue-500 to-transparent opacity-20" />
       <div className="fixed top-20 right-10 w-40 h-40 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-pulse" />
       <div className="fixed bottom-20 left-10 w-60 h-60 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-pulse delay-1000" />
     </div>

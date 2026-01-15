@@ -20,11 +20,11 @@ export default function NotFound() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
       <div className="max-w-2xl w-full mx-auto text-center">
         {/* Animated 404 Number */}
         <div className="relative mb-8">
-          <div className="text-9xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse">
+          <div className="text-9xl font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse">
             404
           </div>
           <div className="absolute -top-4 -right-4">
@@ -111,7 +111,7 @@ export default function NotFound() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-20"></div>
+      <div className="fixed bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent opacity-20"></div>
       <div className="fixed top-10 left-10 w-32 h-32 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
       <div className="fixed bottom-10 right-10 w-48 h-48 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
     </div>
