@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/layout/Navbar/logo";
-import { NavMenu } from "@/components/layout/Navbar/nav-menu";
-import { NavigationSheet } from "@/components/layout/Navbar/navigation-sheet";
+import { Logo } from "@/components/layout/logo";
+import { NavMenu } from "@/components/layout/nav-menu";
+import { NavigationSheet } from "@/components/layout/navigation-sheet";
 import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   return (
-    <nav className="top-6 inset-x-4 h-16 bg-background border max-w-(--breakpoint-xl) mx-auto rounded-full">
+    <nav className="fixed z-50 top-6 inset-x-4 h-16 bg-background border max-w-(--breakpoint-xl) mx-auto rounded-full">
       <div className="h-full flex items-center justify-between mx-auto px-4">
         <Logo />
 
