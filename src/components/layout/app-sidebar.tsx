@@ -15,6 +15,9 @@ import {
 } from "@/components/ui/sidebar";
 import { Logo } from "./logo";
 import Link from "next/link";
+import { adminRoutes } from "@/routes/adminRoutes";
+import { userRoutes } from "@/routes/userRoutes";
+import { Route } from "@/types/routes.type";
 
 // This is sample data.
 const data = {
@@ -37,15 +40,41 @@ const data = {
           url: "/dashboard2/analytics2",
         },
         {
+          title: "Admin Dashboard",
+          url: "/admin-dashboard",
+        },
+        {
+          title: "User Dashboard",
+          url: "/user-dashboard",
+        },
+        {
           title: "Home",
           url: "/",
         },
       ],
-    }
+    },
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  user,
+  ...props
+}: { user: { role: string } } & React.ComponentProps<typeof Sidebar>) {
+
+  let routes: Route[] = [];
+
+  switch (user.role) {
+    case "ADMIN":
+      routes = adminRoutes;
+      break;
+    case "USER":
+      routes = userRoutes;
+      break;
+    default:
+      routes = [];
+      break;
+  }
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -54,7 +83,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
+        {/* {data.navMain.map((item) => ( */}
+        {routes.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
