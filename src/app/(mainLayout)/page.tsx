@@ -1,22 +1,92 @@
-import BlogCard from '@/components/modules/home/BlogCard';
-import { blogService } from '@/services/blog.service';
+import BlogCard from "@/components/modules/home/BlogCard";
+import { blogService } from "@/services/blog.service";
 // import { userService } from '@/services/user.service';
-import { BlogPost } from '@/types/blog.type';
-import React from 'react';
+import { BlogPost } from "@/types/blog.type";
+import Image from "next/image";
+import React from "react";
 
-const Home = async() => {
-    // const {data: session} = await userService.getSession();
-    // console.log("session from home", session);
-    const {data: blogs} = await blogService.getAllBlogPosts({search: ''}, {revalidate: 5});
-    return (
-        <div>
-            <div className="max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-30 w-11/12 mx-auto">
-                {blogs?.map((blog: BlogPost) => (
-                    <BlogCard key={blog.id} post={blog} />
-                ))}
-            </div>
+const Home = async () => {
+  // const {data: session} = await userService.getSession();
+  // console.log("session from home", session);
+
+  // const {success, data: posts, error} = await blogService.getAllBlogPosts({search: ''}, {revalidate: 5});
+  // const {data: featuredPosts} = await blogService.getAllBlogPosts({isFeatured: true}, {revalidate: 5});
+
+  const getPostsPromise = blogService.getAllBlogPosts(
+    { search: "" },
+    { revalidate: 5 }
+  );
+  const getFeaturedPostsPromise = blogService.getAllBlogPosts(
+    { isFeatured: true },
+    { revalidate: 5 }
+  );
+  const [{ success, data: posts }, { data: featuredPosts }] = await Promise.all([
+    getPostsPromise,
+    getFeaturedPostsPromise,
+  ]);
+
+  // console.log(featuredPosts);
+  return (
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="mb-12 mt-8 h-[calc(100vh-80px)] flex flex-col justify-center">
+        <div className="relative w-full h-96 mb-6">
+          <img
+            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=100"
+            alt="Hero"
+            className="w-full h-full object-cover rounded-lg"
+          />
+
+          {/* <Image
+            src={coffee}
+            fill
+            alt="Hero"
+            className="object-cover rounded-md"
+          /> */}
+          {/* <Image
+              src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=100"
+              fill
+              priority
+              alt="Hero"
+              className="object-cover rounded-md"
+            /> */}
         </div>
-    );
+        <h1 className={"text-5xl font-bold text-center mb-4"}>
+          Welcome to Our Blog
+        </h1>
+      </div>
+
+      {featuredPosts.length > 0 && (
+        <div className="mb-12">
+          <h2 className={"text-2xl font-bold mb-6"}>Featured Posts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {featuredPosts.splice(0, 3).map((post: BlogPost) => (
+              <div key={post.id} className="border rounded-lg overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=100"
+                  alt={post.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="font-bold text-xl mb-2">{post.title}</h3>
+                  <p className="text-gray-600 line-clamp-2">{post.content}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div>
+        <h2 className="text-2xl font-bold mb-6">All Posts</h2>
+        <div className="grid grid-cols-3 gap-5">
+          {!success ? <p className="text-red-500">{"No posts found"}</p> : null}
+          {posts?.map((post: BlogPost) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
