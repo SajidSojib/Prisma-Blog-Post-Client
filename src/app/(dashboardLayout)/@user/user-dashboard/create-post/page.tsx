@@ -1,5 +1,5 @@
-import BlogFormClient from "@/components/modules/user/createBlogFromClient";
-import BlogFormServer from "@/components/modules/user/createBlogFromServer";
+import BlogFormClient from "@/components/modules/user/create-post/createBlogFromClient";
+import BlogFormServer from "@/components/modules/user/create-post/createBlogFromServer";
 
 
 export default function CreatePost() {

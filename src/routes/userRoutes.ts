@@ -9,6 +9,10 @@ export const userRoutes: Route[] = [
                 url: "/user-dashboard/create-post"
             },
             {
+                title: "Post History",
+                url: "/user-dashboard/history"
+            },
+            {
                 title: "My Orders",
                 url: "/user-orders"
             },
